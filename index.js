@@ -14,23 +14,33 @@ const corsOption = {
 
 const data = [
     {
-        "value":`{
-            "index":"0",
-            "label": "(x^4)-13",
-            "xl":"0",
-            "xr":"2"
-        }`,
-        "label": '(x^4)-13',
+        "value":"Equation1",
+        "xl":"0",
+        "xr":"2",
+        "label":"(z^4)-13",
+        "group":"Example From API"
     },
     {
-        "value":`{
-            "index":"1",
-            "label": "(x^2)-7",
-            "xl":"1",
-            "xr":"2"
-        }`, 
-        "label": '(x^2)-16',
-    }
+        "value":"Equation2",
+        "xl":"2",
+        "xr":"5",
+        "label":"(x^2)-16",
+        "group":"Example From API"
+    },
+    {
+        "value":"Equation3",
+        "xl":"-1",
+        "xr":"5",
+        "label":"(x^2)-4",
+        "group":"Example From API"
+    },
+    {
+        "value":"Equation4",
+        "xl":"5",
+        "xr":"12",
+        "label":"2x-20",
+        "group":"Example From API"
+    },
 ]
 
 app.use(cors(corsOption))
