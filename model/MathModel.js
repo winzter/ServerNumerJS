@@ -5,8 +5,10 @@ const MathSchema = new mongoose.Schema({
     equation:String,
     xl:String,
     xr:String,
+    x0:String,
     label:String,
-    group:String
+    group:String,
+    topic:String
 })
 
 const MathModel = mongoose.model('MathRootEquation',MathSchema)

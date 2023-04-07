@@ -1,17 +1,27 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "My API",
+    "title": "Numerical Method API",
     "description": "Description",
     "version": "1.0.0"
   },
   "host": "localhost:5000",
   "basePath": "/",
   "paths": {
-    "/rootofequation": {
+    "/api/rootofequation/{Topic}": {
       "get": {
-        "description": "",
-        "parameters": [],
+        "summary":"Find set of equations",
+        "description":"Find set of equations by topic ex. Bisection , OnePoint",
+        "parameters": [
+          {
+            "name":"Topic",
+            "in":"path",
+            "required":"true",
+            "schema":{
+              "type":"string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -19,7 +29,7 @@
         }
       }
     },
-    "/postdata": {
+    "/api/postdata": {
       "post": {
         "description": "",
         "parameters": [

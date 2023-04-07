@@ -23,14 +23,15 @@ app.use(bodyparser.urlencoded({ extended: false }))
 app.use(express.json());
 app.use(cors(corsOption))
 
-app.get("/rootofequation",async(req,res)=>{
-    let find = await MathModel.find()
-    res.json(find)
+app.get("/api/rootofequation/:topic",async(req,res)=>{
+    let { topic } = req.params
+    let find = await MathModel.find({topic:`${topic}`})
+        res.json(find)
+    
 })
 
 
-app.post("/postdata",async(req,res)=>{
-    console.log(req.body);
+app.post("/api/postdata",async(req,res)=>{
     let {value,equation,xl,xr,label,group} = req.body
     await MathModel.create({value,equation,xl,xr,label,group})
     res.send({ status: 'SUCCESS' })
