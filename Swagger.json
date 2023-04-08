@@ -1,5 +1,5 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.0",
   "info": {
     "title": "Numerical Method API",
     "description": "Description",
@@ -7,7 +7,51 @@
   },
   "host": "localhost:5000",
   "basePath": "/",
+  "components": {
+    "securitySchemes": {
+        "bearerAuth": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT"
+        }
+    }
+  },
   "paths": {
+    "/checktoken": {
+      "get": {
+        "description": "",
+        "security": [
+          {
+            "bearerAuth":[]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/gentoken/{name}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name":"name",
+            "in":"path",
+            "required":"true",
+            "schema":{
+              "type":"string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/rootofequation/{Topic}": {
       "get": {
         "summary":"Find set of equations",
@@ -32,37 +76,52 @@
     "/api/postdata": {
       "post": {
         "description": "",
-        "parameters": [
+        "security": [
           {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "value": {
-                  "example": "Bisection100"
-                },
-                "equation": {
-                  "example": "(x+5)-10"
-                },
-                "xl": {
-                  "type":"string",
-                  "example": "3"
-                },
-                "xr": {
-                  "type":"string",
-                  "example": "6"
-                },
-                "label": {
-                  "example": "(x+5)-10"
-                },
-                "group": {
-                  "example": "Example From API"
+            "bearerAuth":[]
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type":"string",
+                    "example": "Bisection100"
+                  },
+                  "equation": {
+                    "type":"string",
+                    "example": "(x+5)-10"
+                  },
+                  "xl": {
+                    "type":"string",
+                    "example": "3"
+                  },
+                  "xr": {
+                    "type":"string",
+                    "example": "6"
+                  },
+                  "label": {
+                    "type":"string",
+                    "example": "(x+5)-10"
+                  },
+                  "group": {
+                    "type":"string",
+                    "example": "Example From API"
+                  },
+                  "topic":{
+                    "type":"string",
+                    "example":"Bisection"
+                  }
                 }
               }
             }
           }
-        ],
+        },
+        
         "responses": {
           "200": {
             "description": "OK"
@@ -71,4 +130,5 @@
       }
     }
   }
+  
 }
