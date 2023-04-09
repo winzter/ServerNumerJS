@@ -17,6 +17,26 @@
     }
   },
   "paths": {
+    "/gentoken/{Username}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name":"Username",
+            "in":"path",
+            "required":"true",
+            "schema":{
+              "type":"string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/checktoken": {
       "get": {
         "description": "",
@@ -32,19 +52,10 @@
         }
       }
     },
-    "/gentoken/{name}": {
+    "/api/rootofequation": {
       "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name":"name",
-            "in":"path",
-            "required":"true",
-            "schema":{
-              "type":"string"
-            }
-          }
-        ],
+        "summary":"Find set of equations",
+        "description":"Find set of all equations",
         "responses": {
           "200": {
             "description": "OK"
@@ -60,10 +71,10 @@
           {
             "name":"Topic",
             "in":"path",
-            "required":"true",
             "schema":{
               "type":"string"
-            }
+            },
+            "required":"true"
           }
         ],
         "responses": {
@@ -115,6 +126,64 @@
                   "topic":{
                     "type":"string",
                     "example":"Bisection"
+                  }
+                }
+              }
+            }
+          }
+        },
+        
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/register": {
+      "post": {
+        "description": "",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type":"string"
+                  },
+                  "password": {
+                    "type":"string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "description": "",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type":"string"
+                  },
+                  "password": {
+                    "type":"string"
                   }
                 }
               }
