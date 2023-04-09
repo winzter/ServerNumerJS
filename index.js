@@ -101,7 +101,7 @@ app.post("/login",async (req,res)=>{
     let { username , password } = req.body
     let find = await AccountModel.findOne({username:`${username}`})
     if(!find){
-        res.status(401).send({status:false})
+        res.status(401).send({status:"User not found"})
     }else{
         console.log(find);
         let hashPassword = find.password
@@ -143,7 +143,7 @@ app.post("/api/postdata",verifyToken,(req,res)=>{
     console.log(req.body);
     let { value, equation, xl, xr, label, group, topic } = req.body
     MathModel.create({value,equation,xl,xr,label,group,topic})
-    res.send({ status: 'SUCCESS' })
+    res.send({ status: 'POST SUCCESS' })
 })
 
     
