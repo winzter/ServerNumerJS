@@ -153,3 +153,5 @@ app.use("/docs",SwaggerUI.serve,SwaggerUI.setup(Swagger))
 app.listen(5000,()=>{
     console.log('Listening on port 5000');
 })
+
+module.exports = app
